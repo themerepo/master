@@ -1,0 +1,205 @@
+<html>
+    <head>
+        <title>{Title}</title>
+        <link rel="shortcut icon" href="{Favicon}">
+        <link rel="alternate" type="application/rss+xml" href="{RSS}">
+        {block:Description}
+            <meta name="description" content="{MetaDescription}" />
+        {/block:Description}
+        <meta name="color:Link" content="#2E87DD" />
+        <meta name="color:Text" content="#4D4D4D" />
+        <meta name="color:Text Post" content="#F5F5F5" />
+        <meta name="color:Sidebar" content="#F5F5F5" />
+        <meta name="color:Background Color" content="#FFFFFF" />
+        
+        <script src='https://code.jquery.com/jquery-1.4.2.min.js' type='text/javascript'></script> 
+        <script src="https://economythemes.github.io/assets/theme_assets.js"></script>
+        <style>
+            @import url(https://fonts.googleapis.com/css?family=Inconsolata:400,700);
+        
+            * {
+                font-family: "Inconsolata", Andale Mono, Monaco, Monospace;
+            }
+            
+            a {
+                color: {color:Link};
+            }
+        
+            body {
+                margin: 0px;
+                color: {color:Text};
+                background-color: {color:Background Color};
+            }
+            
+            #content {
+                border-spacing: 0px;
+                width: 100%;
+                height: 100%;
+            }
+            
+            #content td{
+                padding: 0px;
+                vertical-align: top;
+                border-spacing: 0px;
+            }
+            
+            #sidebar_wrap {
+                background-color: {color:Sidebar};
+                width: 195px;
+            }
+            
+            #sidebar {
+                width: 175px;
+                padding: 10px;
+                text-align: center;
+            }
+            
+            .title a {
+                color: inherit;
+            }
+            
+            #sidebar_image {
+                -webkit-border-radius: 50%;
+                -moz-border-radius: 50%;
+                border-radius: 50%;
+            }
+            
+            #posts {
+                list-style: none;
+                padding: 0px 0px 0px 20px;
+                margin: 20px 0px 20px 0px;
+            }
+            
+            .post {
+                width: 400px;
+                margin-bottom:20px;
+            }
+            
+            .post img {
+                vertical-align: middle;
+            }
+            
+            .post .text_post p {
+                margin: 0px;
+            }
+            
+            .text_post {
+                background-color: {color:Text Post};
+            }
+            
+            .permalink {
+                text-align: right;
+            }
+            
+            ul.chat {
+                padding: 0px;
+                list-style: none;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="wrap">
+            <table id="content">
+                <tr>
+                    <td id="sidebar_wrap">
+                        <div id="sidebar">
+                            <h1 class="title">
+                                <a href="/">{Title}</a>
+                            </h1>
+                            <img id="sidebar_image" src="{PortraitURL-128}" />
+                            {block:Description}
+                                <p id="description">{Description}</p>
+                            {/block:Description}
+                            {block:PreviousPage}
+                                <a href="{PreviousPage}">&#171; Previous</a>
+                            {/block:PreviousPage}{block:NextPage}
+                                <a href="{NextPage}">Next &#187;</a>
+                            {/block:NextPage}
+                        </div>
+                    </td>
+                    <td>
+                        <div id="posts_wrap">
+                            <ol id="posts">
+                                {block:Posts}
+                                    <li class="post {PostType}">
+                                        {block:Text}
+                                            <div class="text_post">
+                                                {block:Title}
+                                                    <h3>{Title}</h3>
+                                                {/block:Title}{Body}
+                                            </div>  
+                                        {/block:Text}
+                                        {block:Answer}
+                                            <div class="text_post">
+                                                <p class="akser gray">{Asker} asked: {Question}</p>
+                                                <p>{Answer}</p>
+                                            </div>
+                                        {/block:Answer}
+                                        {block:Photo}
+                                            <img src="{PhotoURL-500}" alt="{PhotoAlt}" width="400"/>
+                                         {/block:Photo}
+                                        {block:Panorama}
+                                            <img src="{PhotoURL-Panorama}" alt="{PhotoAlt}" width="400"/>
+                                        {/block:Panorama}
+                                        {block:Photoset}
+                                            {block:Photos}
+                                                <img src="{PhotoURL-500}" width="400" />
+                                            {/block:Photos}
+                                        {/block:Photoset}
+                                        {block:Quote}
+                                            <div class="text_post">
+                                                "{Quote}"
+                                                {block:Source}
+                                                    <div class="source">{Source}</div>
+                                                {/block:Source}
+                                            </div>
+                                        {/block:Quote}
+                                        {block:Link}
+                                            <div class="text_post">
+                                                <a href="{URL}" class="link" {Target}>{Name}</a>
+                                                {block:Description}
+                                                    <div class="description">{Description}</div>
+                                                {/block:Description}
+                                            </div>
+                                        {/block:Link}
+                                        {block:Chat}
+                                            <div class="text_post">
+                                                {block:Title}
+                                                    <h3><a href="{Permalink}">{Title}</a></h3>
+                                                {/block:Title}
+                                                <ul class="chat gray">
+                                                    {block:Lines}
+                                                        <li class="{Alt} user_{UserNumber}">
+                                                            {block:Label}
+                                                                <span class="label">{Label}</span>
+                                                            {/block:Label}
+                                                            {Line}
+                                                        </li>
+                                                    {/block:Lines}
+                                                </ul>
+                                            </div>
+                                        {/block:Chat}
+                                        {block:Video}
+                                            {Video-400}
+                                        {/block:Video}
+                                        {block:Audio}
+                                            {AudioEmbed-400}
+                                        {/block:Audio}
+                                        {block:IndexPage}
+                                            <div class="permalink">
+                                                <a href="{Permalink}">{NoteCountWithLabel}</a>
+                                            </div>
+                                        {/block:IndexPage}
+                                        {block:PermalinkPage}
+                                            {PostNotes}
+                                        {/block:PermalinkPage}
+                                    </li>
+                                {/block:Posts}
+                            </ol>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </body>
+</html>
